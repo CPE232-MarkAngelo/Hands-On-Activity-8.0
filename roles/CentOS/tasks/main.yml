@@ -1,0 +1,25 @@
+####### INSTALLING MAGIOS ON CENTOS ######
+---
+ - name: install EPEL repositoy
+   yum:
+     name: epel-release
+     state: latest
+   when: ansible_distribution == "CentOS"
+
+ - name: Install required packages for Nagios
+   yum:  
+     name: nagios
+     state: latest
+   when: ansible_distribution  == "CentOS"
+
+ - name: install Nagios dependencies
+   yum:
+     name:
+       - gd-devel
+       - libpng-devel
+       - freetype-devel
+       - gcc
+       - glibc
+     state: present
+   when: ansible_distribution == "CentOS"
+
